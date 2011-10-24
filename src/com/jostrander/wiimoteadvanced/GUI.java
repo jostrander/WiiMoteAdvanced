@@ -1,10 +1,12 @@
 package com.jostrander.wiimoteadvanced;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 
 public class GUI {
@@ -14,8 +16,10 @@ public class GUI {
 	public static JPanel tab2 = new JPanel();
 	public static JTextField batterytf = new JTextField();
 	public static JTextField connectedtf = new JTextField();
+	public static JComboBox<String> mode = new JComboBox<String>();
 	
 	public static void init() {
+		gui.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		gui.setSize(300,300);
 		gui.setResizable(false);
 		gui.setTitle("WiiMoteAdvanced");
@@ -31,17 +35,24 @@ public class GUI {
 		battery.setBounds(5, 35, battery.getWidth(), battery.getHeight());
 
 		connectedtf.setEnabled(false);
-		connectedtf.setSize(100, 20);
-		connectedtf.setBounds(150, 45, connectedtf.getWidth(), connectedtf.getHeight());
+		connectedtf.setSize(120, 20);
+		connectedtf.setBounds(150, 5, connectedtf.getWidth(), connectedtf.getHeight());
 		
 		batterytf.setEnabled(false);
-		batterytf.setSize(100,20);
-		batterytf.setBounds(150, 25, batterytf.getWidth(), batterytf.getHeight());
+		batterytf.setSize(120,20);
+		batterytf.setBounds(150, 35, batterytf.getWidth(), batterytf.getHeight());
+		
+		mode.setSize(120,20);
+		mode.setLocation(150, 65);
+		mode.addItem("WiiMouse");
+		mode.addItem("Whiteboard");
+		mode.addItem("Airmouse");
 		
 		tab1.add(connected);
 		tab1.add(connectedtf);
 		tab1.add(batterytf);
 		tab1.add(battery);
+		tab1.add(mode);
 		tabs.addTab("Basics", tab1);
 		
 		/*
@@ -51,8 +62,5 @@ public class GUI {
 		gui.setContentPane(tabs);
 		gui.setVisible(true);
 		
-	}
-	public static void updateBattery(int percent) {
-		batterytf.setText(percent+"%");
 	}
 } 

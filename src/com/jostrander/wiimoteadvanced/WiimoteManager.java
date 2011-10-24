@@ -8,7 +8,7 @@ import wiiusej.Wiimote;
 
 public class WiimoteManager {
 	public static Boolean isConnected = false;
-	public static Boolean rumbleOnConnect = true;
+	public static Boolean rumbleOnConnect = false;
 	private static Wiimote wiimote;
 	public static void connect() {
 		if (!isConnected) {

@@ -1,17 +1,14 @@
 package com.jostrander.wiimoteadvanced;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 public class WiiMoteAdvanced {
-	private static JDialog screens[];
+	public static ArrayList<JDialog> screens = new ArrayList<JDialog>();
 
 	public static void main(String[] args) {
 		/*
@@ -42,14 +39,12 @@ public class WiiMoteAdvanced {
 			// if changed, prompt again.
 			for (int i = 0; i < gs.length; i++) {
 				Rectangle bounds = gs[i].getDefaultConfiguration().getBounds();
-				String idstring = gs[i].getIDstring();
-				showScreenHint(i, bounds, idstring.replace('\\', ' '));
+				new screenSelector(i, bounds);
 			}
 		}
 		GUI.init();
 		WiimoteManager.connect();
-		Runnable r = new Runnable() {
-
+		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
@@ -58,29 +53,10 @@ public class WiiMoteAdvanced {
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}				
+				}
 			}
-			
-		};
-	}
 
-	private static void showScreenHint(int id, Rectangle r, String name) {
-		try {
-			screens[id] = new JDialog();
-			JDialog hinter = screens[id];
-			JLabel label = new JLabel("Device " + id
-					+ "\nClick on a screen to select it.");
-			label.setForeground(new Color(255, 255, 255));
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			hinter.setUndecorated(true);
-			hinter.setAlwaysOnTop(true);
-			hinter.setBackground(new Color(0, 0, 0, 100));
-			hinter.setLocation(r.x, r.y);
-			hinter.setSize(new Dimension(r.width, r.height));
-			hinter.add(label);
-			hinter.setVisible(true);
-		} catch (NullPointerException e) {
-			System.err.println(e.getMessage());
-		}
+		});
+		t.start();
 	}
 }
