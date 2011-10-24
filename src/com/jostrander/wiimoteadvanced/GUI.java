@@ -59,8 +59,9 @@ public class GUI {
 		 * 	TAB 2 [ADVANCED]
 		 */
 		tabs.addTab("Advanced", tab2);
-		gui.setContentPane(tabs);
+		gui.setContentPane(tabs);		
+	}
+	public void showOptions() {
 		gui.setVisible(true);
-		
 	}
 } 
