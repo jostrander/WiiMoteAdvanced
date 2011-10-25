@@ -3,6 +3,7 @@ package com.jostrander.wiimoteadvanced;
 import wiiusej.WiiUseApiManager;
 import wiiusej.Wiimote;
 
+import com.jostrander.wiimoteadvanced.chrome.GUI;
 import com.jostrander.wiimoteadvanced.listeners.WiiPresentationListener;
 
 

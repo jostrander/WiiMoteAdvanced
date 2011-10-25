@@ -1,6 +1,6 @@
 package com.jostrander.wiimoteadvanced.listeners;
 
-import com.jostrander.wiimoteadvanced.GUI;
+import com.jostrander.wiimoteadvanced.chrome.GUI;
 
 import wiiusej.wiiusejevents.physicalevents.ExpansionEvent;
 import wiiusej.wiiusejevents.physicalevents.IREvent;

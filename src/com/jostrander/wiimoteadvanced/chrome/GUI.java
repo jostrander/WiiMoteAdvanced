@@ -1,4 +1,4 @@
-package com.jostrander.wiimoteadvanced;
+package com.jostrander.wiimoteadvanced.chrome;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
