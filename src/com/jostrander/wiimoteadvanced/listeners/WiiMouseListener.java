@@ -2,7 +2,6 @@ package com.jostrander.wiimoteadvanced.listeners;
 
 import java.awt.Rectangle;
 
-import wiiusej.values.IRSource;
 import wiiusej.wiiusejevents.physicalevents.IREvent;
 import wiiusej.wiiusejevents.physicalevents.MotionSensingEvent;
 
