@@ -1,4 +1,4 @@
-package com.jostrander.wiimoteadvanced;
+package com.jostrander.wiimoteadvanced.helpers;
 
 public class LogUtil {
 	public static boolean logging = true;

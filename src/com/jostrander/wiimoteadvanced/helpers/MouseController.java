@@ -1,4 +1,4 @@
-package com.jostrander.wiimoteadvanced;
+package com.jostrander.wiimoteadvanced.helpers;
 
 import java.awt.AWTException;
 import java.awt.Robot;

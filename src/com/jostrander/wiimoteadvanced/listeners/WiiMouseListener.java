@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 import wiiusej.wiiusejevents.physicalevents.IREvent;
 import wiiusej.wiiusejevents.physicalevents.MotionSensingEvent;
 
-import com.jostrander.wiimoteadvanced.WiimoteManager;
 import com.jostrander.wiimoteadvanced.runtimePrefs;
+import com.jostrander.wiimoteadvanced.helpers.WiimoteManager;
 
 public class WiiMouseListener extends DefaultListener {
 

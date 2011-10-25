@@ -1,4 +1,4 @@
-package com.jostrander.wiimoteadvanced;
+package com.jostrander.wiimoteadvanced.helpers;
 
 import wiiusej.WiiUseApiManager;
 import wiiusej.Wiimote;

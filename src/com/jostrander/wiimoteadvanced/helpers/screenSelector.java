@@ -1,4 +1,4 @@
-package com.jostrander.wiimoteadvanced;
+package com.jostrander.wiimoteadvanced.helpers;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+
+import com.jostrander.wiimoteadvanced.WiiMoteAdvanced;
+import com.jostrander.wiimoteadvanced.runtimePrefs;
 
 @SuppressWarnings("serial")
 public class screenSelector extends JDialog implements MouseListener {

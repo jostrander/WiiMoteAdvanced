@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 
 import com.jostrander.wiimoteadvanced.chrome.GUI;
+import com.jostrander.wiimoteadvanced.helpers.LibraryLoader;
+import com.jostrander.wiimoteadvanced.helpers.WiimoteManager;
 
 public class WiiMoteAdvanced {
 	public static ArrayList<JDialog> screens = new ArrayList<JDialog>();
