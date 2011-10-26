@@ -8,10 +8,14 @@ public class WiiMoteAdvanced {
 	public static boolean isRunningFromJar = false;
 	
 	public static void main(String[] args) {
+		System.out.println("Starting WiiMoteAdvanced...");
 		//new LibraryLoader();
+		System.loadLibrary("wiiuse");
+		System.loadLibrary("wiiusej");
 		ScreenManager.init();
-		//WiimoteManager.connect();
+		WiimoteManager.connect();
 		GUI.init();
+		GUI.showOptions();
 		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {

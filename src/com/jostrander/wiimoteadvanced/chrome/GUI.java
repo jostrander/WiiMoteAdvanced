@@ -61,7 +61,7 @@ public class GUI {
 		tabs.addTab("Advanced", tab2);
 		gui.setContentPane(tabs);		
 	}
-	public void showOptions() {
+	public static void showOptions() {
 		gui.setVisible(true);
 	}
 } 

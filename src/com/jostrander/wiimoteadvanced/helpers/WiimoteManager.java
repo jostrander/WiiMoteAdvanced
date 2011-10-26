@@ -4,7 +4,7 @@ import wiiusej.WiiUseApiManager;
 import wiiusej.Wiimote;
 
 import com.jostrander.wiimoteadvanced.chrome.GUI;
-import com.jostrander.wiimoteadvanced.listeners.WiiPresentationListener;
+import com.jostrander.wiimoteadvanced.listeners.WiiMediaCenter;
 
 
 public class WiimoteManager {
@@ -18,7 +18,7 @@ public class WiimoteManager {
 				wiimote = wiimotes[0];
 				isConnected = true;
 				GUI.connectedtf.setText("Wiimote "+wiimote.getId());
-				wiimote.addWiiMoteEventListeners(new WiiPresentationListener());
+				wiimote.addWiiMoteEventListeners(new WiiMediaCenter());
 				
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.out.println("No Wiimotes Found!");
