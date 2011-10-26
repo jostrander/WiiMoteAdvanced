@@ -1,8 +1,13 @@
 package com.jostrander.wiimoteadvanced;
 
-import java.awt.Rectangle;
+import java.util.prefs.Preferences;
 
 public class runtimePrefs {
-	public static Rectangle screenDims;
-	public static int Device;
+	public static Preferences prefs;
+	static {
+		new runtimePrefs();
+	}
+	runtimePrefs() {
+		prefs = Preferences.userNodeForPackage(this.getClass());
+	}
 }

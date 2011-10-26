@@ -12,22 +12,28 @@ import java.util.Iterator;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import com.jostrander.wiimoteadvanced.runtimePrefs;
+
 public class ScreenManager {
-	public static int currentScreen = 0;
+	public static int currentScreen = -1;
 	public static Rectangle currentScreenRect;
 	private static ArrayList<JDialog> sdialogs = new ArrayList<JDialog>();
 
 	public static void init() {
-		//check for prefs, if no prefs, run selectScreen();
-		selectScreen();
+		System.out.println("Screen Manager Initializing...");
+		if (runtimePrefs.prefs.getInt("currentScreen", -1) > -1) {
+			currentScreen = runtimePrefs.prefs.getInt("currentScreen", -1);
+		} else {
+			selectScreen();
+		}
+		System.out.println("Selected Screen:"+currentScreen);
 	}
 	public static void selectScreen() {
 		ScreenSelector();
 	}
 
 	private static void ScreenSelector() {
-		GraphicsEnvironment ge = GraphicsEnvironment
-				.getLocalGraphicsEnvironment();
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice[] gs = ge.getScreenDevices();
 		int i=0;
 		for (GraphicsDevice gd : gs) {
@@ -50,6 +56,7 @@ public class ScreenManager {
 		something.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				runtimePrefs.prefs.putInt("currentScreen", Device);
 				currentScreen = Device;
 				currentScreenRect = sdialogs.get(Device).getBounds();
 				Iterator<JDialog> i = sdialogs.iterator();

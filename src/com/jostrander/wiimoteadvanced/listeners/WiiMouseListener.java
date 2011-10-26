@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import wiiusej.wiiusejevents.physicalevents.IREvent;
 import wiiusej.wiiusejevents.physicalevents.MotionSensingEvent;
 
-import com.jostrander.wiimoteadvanced.runtimePrefs;
+import com.jostrander.wiimoteadvanced.helpers.ScreenManager;
 import com.jostrander.wiimoteadvanced.helpers.WiimoteManager;
 
 public class WiiMouseListener extends DefaultListener {
@@ -16,7 +16,7 @@ public class WiiMouseListener extends DefaultListener {
 	@Override
 	public void onIrEvent(IREvent e) {
 		WiimoteManager.startRumble();
-		Rectangle r = runtimePrefs.screenDims;
+		Rectangle r = ScreenManager.currentScreenRect;
 		double heightRatio = 768/r.height;
 		double widthRatio = 1024/r.width;
 		double x = (e.getAx()*heightRatio);
