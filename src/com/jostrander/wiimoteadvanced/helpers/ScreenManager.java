@@ -1,6 +1,7 @@
 package com.jostrander.wiimoteadvanced.helpers;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
@@ -11,6 +12,7 @@ import java.util.Iterator;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import com.jostrander.wiimoteadvanced.runtimePrefs;
 
@@ -26,12 +28,12 @@ public class ScreenManager {
 		} else {
 			selectScreen();
 		}
+		currentScreenRect=getScreenDimensions(currentScreen);
 		System.out.println("Selected Screen:"+currentScreen);
 	}
 	public static void selectScreen() {
 		ScreenSelector();
 	}
-
 	private static void ScreenSelector() {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice[] gs = ge.getScreenDevices();
@@ -44,8 +46,10 @@ public class ScreenManager {
 	}
 	private static JDialog screen(Rectangle r, final int Device) {
 		JDialog something = new JDialog();
-		JLabel label = new JLabel("<html><br>Click Here to use the Wiimote on this Screen.</html>");
+		JLabel label = new JLabel("<html>Screen "+Device+"<br>Click Here to use the Wiimote on this Screen.</html>");
 		label.setForeground(Color.WHITE);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font(null, 0, 30));
 		something.setUndecorated(true);
 		something.setAlwaysOnTop(true);
 		something.setBackground(new Color(0,0,0,120));
@@ -59,6 +63,7 @@ public class ScreenManager {
 				runtimePrefs.prefs.putInt("currentScreen", Device);
 				currentScreen = Device;
 				currentScreenRect = sdialogs.get(Device).getBounds();
+				
 				Iterator<JDialog> i = sdialogs.iterator();
 				while (i.hasNext()) {
 					i.next().setVisible(false);
@@ -75,5 +80,11 @@ public class ScreenManager {
 			public void mouseReleased(MouseEvent arg0) {}	
 		});
 		return something;	
+	}
+	private static Rectangle getScreenDimensions(int i) {
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice[] gs = ge.getScreenDevices();
+		GraphicsDevice gd = gs[i];
+		return gd.getDefaultConfiguration().getBounds();
 	}
 }
