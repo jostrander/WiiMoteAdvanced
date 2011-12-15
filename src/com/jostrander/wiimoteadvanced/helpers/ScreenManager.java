@@ -28,7 +28,11 @@ public class ScreenManager {
 		} else {
 			selectScreen();
 		}
-		currentScreenRect=getScreenDimensions(currentScreen);
+		try {
+			currentScreenRect=getScreenDimensions(currentScreen);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			selectScreen();
+		}
 		System.out.println("Selected Screen:"+currentScreen);
 	}
 	public static void selectScreen() {
